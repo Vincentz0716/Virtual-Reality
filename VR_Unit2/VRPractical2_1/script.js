@@ -12,9 +12,18 @@ window.addEventListener("DOMContentLoaded",function() {
     let z = rnd(-20,20);
     createTree(x,0,z);
   }
-   //Task 2: Use the createCloud(...)  to add several clouds to the scene at various positions.
+  //Task 2: Use the createCloud(...)  to add several clouds to the scene at various positions.
+  createCloud(-12, 12, -10);
+  createCloud(-4, 14, -18);
+  createCloud(6, 11, -12);
+  createCloud(15, 13, -19);
+  createCloud(13, 10, 1);
 
-   //Task 4: Use the createHouse(...)  to add several houses to the scene at various positions.
+  //Task 4: Use the createHouse(...)  to add several houses to the scene at various positions.
+  createHouse(-12, -5);
+  createHouse(-4, 5);
+  createHouse(8, -6);
+  createHouse(14, 8);
 })
 
 /* Task 1: Create a function createCloud that,
@@ -25,6 +34,19 @@ window.addEventListener("DOMContentLoaded",function() {
       5) Set cloud entities position to those passed in to the function.
       6) Add the cloud entity to the scene
 */
+function createCloud(x, y, z){
+  let cloud = document.createElement("a-entity");
+
+  for(let position of ["-1 0 0", "0 0.3 0", "1 0 0"]){
+    let sphere = document.createElement("a-sphere");
+    sphere.setAttribute("color", "white");
+    sphere.setAttribute("position", position);
+    cloud.append(sphere);
+  }
+
+  cloud.setAttribute("position", {x: x, y: y, z: z});
+  scene.append(cloud);
+}
 
 /* Task 3: Create a function createHouse that,
       1) Accept an x and z position for where to place the house "entity"
@@ -35,6 +57,28 @@ window.addEventListener("DOMContentLoaded",function() {
       5) Set house entities position to those passed in to the function.
       6) Add the house entity to the scene
 */
+function createHouse(x, z){
+  let house = document.createElement("a-entity");
+
+  let base = document.createElement("a-box");
+  base.setAttribute("scale", "2 2 2");
+  base.setAttribute("color", "tan");
+  base.setAttribute("position", "0 1 0");
+  house.append(base);
+
+  let roof = document.createElement("a-cylinder");
+  roof.setAttribute("color", "brown");
+  roof.setAttribute("position", "0 2.5 0");
+  roof.setAttribute("radius", "1.5");
+  roof.setAttribute("height", "3");
+  roof.setAttribute("segments-radial", "3");
+  roof.setAttribute("rotation", "270 0 0");
+  house.append(roof);
+
+  house.setAttribute("position", {x: x, y: 0, z: z});
+  scene.append(house);
+}
+
 function createTree(x, y, z){
   let tree = document.createElement("a-entity");
   
@@ -53,6 +97,4 @@ function createTree(x, y, z){
   tree.setAttribute("position",{x:x, y:y, z:z});
   scene.append( tree )
 }
-
-
 

@@ -21,3 +21,4 @@ class House{
     scene.append(this.obj);
   }
 }
+dsdsd

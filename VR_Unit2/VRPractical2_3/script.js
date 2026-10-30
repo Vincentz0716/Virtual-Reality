@@ -21,3 +21,4 @@ window.addEventListener("DOMContentLoaded",function() {
   new House(8,-6);
   new House(14,8);
 })
+sdsds

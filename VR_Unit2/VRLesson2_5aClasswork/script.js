@@ -10,14 +10,17 @@ window.addEventListener("DOMContentLoaded",function() {
   }
   snowman = new Snowman(-5,0);
   //Challenge 3: Create a cloud at some high position. Don't forget to declare the variable up top.
-
+  cloud = new Cloud(-5, 6, -8);
   //Challenge 7: Create a snowflake at some high position. Don't forget to declare the variable up top.
+  snowflake = new Snowflake(2, 5, -5);
   loop();
 })
 
 function loop(){
   snowman.spin();
   //Challenge 4: Make the cloud fly
+  cloud.fly();
   //Challenge 8: Make the snowflake fall
+  snowflake.fall();
   window.requestAnimationFrame(loop);
 }
